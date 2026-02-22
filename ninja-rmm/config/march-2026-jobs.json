@@ -1,0 +1,1226 @@
+[
+  {
+    "name": "2287685 Ontario Inc - Maintenance Start",
+    "orgId": 3,
+    "schedule": {
+      "kind": "at",
+      "at": "2026-03-05T08:30:00-05:00"
+    },
+    "sessionTarget": "isolated",
+    "payload": {
+      "kind": "agentTurn",
+      "message": "2287685 Ontario Inc maintenance window starting NOW (08:30-09:30 EST). Run the NinjaRMM maintenance monitor for org 3 and report baseline status. Use: ~/.openclaw/workspace/skills/ninja-rmm/scripts/maintenance-monitor.sh --org 3 --phase scan --window-start '2026-03-05T08:30:00'",
+      "timeoutSeconds": 120
+    },
+    "delivery": {
+      "mode": "announce"
+    },
+    "enabled": true
+  },
+  {
+    "name": "2287685 Ontario Inc - Patch Check",
+    "orgId": 3,
+    "schedule": {
+      "kind": "at",
+      "at": "2026-03-05T09:00:00-05:00"
+    },
+    "sessionTarget": "isolated",
+    "payload": {
+      "kind": "agentTurn",
+      "message": "2287685 Ontario Inc maintenance - 30 min in. Check patch progress for org 3. Use: ~/.openclaw/workspace/skills/ninja-rmm/scripts/maintenance-monitor.sh --org 3 --phase patch --window-start '2026-03-05T08:30:00'. Report any issues.",
+      "timeoutSeconds": 120
+    },
+    "delivery": {
+      "mode": "announce"
+    },
+    "enabled": true
+  },
+  {
+    "name": "2287685 Ontario Inc - Reboot Check",
+    "orgId": 3,
+    "schedule": {
+      "kind": "at",
+      "at": "2026-03-05T09:45:00-05:00"
+    },
+    "sessionTarget": "isolated",
+    "payload": {
+      "kind": "agentTurn",
+      "message": "2287685 Ontario Inc maintenance - 75 min in. Check reboot status for org 3. Use: ~/.openclaw/workspace/skills/ninja-rmm/scripts/maintenance-monitor.sh --org 3 --phase reboot --window-start '2026-03-05T08:30:00'. Report which servers rebooted.",
+      "timeoutSeconds": 120
+    },
+    "delivery": {
+      "mode": "announce"
+    },
+    "enabled": true
+  },
+  {
+    "name": "2287685 Ontario Inc - Final Report",
+    "orgId": 3,
+    "schedule": {
+      "kind": "at",
+      "at": "2026-03-05T09:45:00-05:00"
+    },
+    "sessionTarget": "isolated",
+    "payload": {
+      "kind": "agentTurn",
+      "message": "2287685 Ontario Inc maintenance window ENDED. Generate final report for org 3. Use: ~/.openclaw/workspace/skills/ninja-rmm/scripts/maintenance-monitor.sh --org 3 --phase final --window-start '2026-03-05T08:30:00'. Summarize: servers rebooted, failures, pending patches. Flag any issues.",
+      "timeoutSeconds": 180
+    },
+    "delivery": {
+      "mode": "announce"
+    },
+    "enabled": true
+  },
+  {
+    "name": "Altanic Transportation Inc. - Maintenance Start",
+    "orgId": 7,
+    "schedule": {
+      "kind": "at",
+      "at": "2026-03-17T18:00:00-05:00"
+    },
+    "sessionTarget": "isolated",
+    "payload": {
+      "kind": "agentTurn",
+      "message": "Altanic Transportation Inc. maintenance window starting NOW (18:00-20:00 EST). Run the NinjaRMM maintenance monitor for org 7 and report baseline status. Use: ~/.openclaw/workspace/skills/ninja-rmm/scripts/maintenance-monitor.sh --org 7 --phase scan --window-start '2026-03-17T18:00:00'",
+      "timeoutSeconds": 120
+    },
+    "delivery": {
+      "mode": "announce"
+    },
+    "enabled": true
+  },
+  {
+    "name": "Altanic Transportation Inc. - Patch Check",
+    "orgId": 7,
+    "schedule": {
+      "kind": "at",
+      "at": "2026-03-17T18:30:00-05:00"
+    },
+    "sessionTarget": "isolated",
+    "payload": {
+      "kind": "agentTurn",
+      "message": "Altanic Transportation Inc. maintenance - 30 min in. Check patch progress for org 7. Use: ~/.openclaw/workspace/skills/ninja-rmm/scripts/maintenance-monitor.sh --org 7 --phase patch --window-start '2026-03-17T18:00:00'. Report any issues.",
+      "timeoutSeconds": 120
+    },
+    "delivery": {
+      "mode": "announce"
+    },
+    "enabled": true
+  },
+  {
+    "name": "Altanic Transportation Inc. - Reboot Check",
+    "orgId": 7,
+    "schedule": {
+      "kind": "at",
+      "at": "2026-03-17T19:15:00-05:00"
+    },
+    "sessionTarget": "isolated",
+    "payload": {
+      "kind": "agentTurn",
+      "message": "Altanic Transportation Inc. maintenance - 75 min in. Check reboot status for org 7. Use: ~/.openclaw/workspace/skills/ninja-rmm/scripts/maintenance-monitor.sh --org 7 --phase reboot --window-start '2026-03-17T18:00:00'. Report which servers rebooted.",
+      "timeoutSeconds": 120
+    },
+    "delivery": {
+      "mode": "announce"
+    },
+    "enabled": true
+  },
+  {
+    "name": "Altanic Transportation Inc. - Final Report",
+    "orgId": 7,
+    "schedule": {
+      "kind": "at",
+      "at": "2026-03-17T20:15:00-05:00"
+    },
+    "sessionTarget": "isolated",
+    "payload": {
+      "kind": "agentTurn",
+      "message": "Altanic Transportation Inc. maintenance window ENDED. Generate final report for org 7. Use: ~/.openclaw/workspace/skills/ninja-rmm/scripts/maintenance-monitor.sh --org 7 --phase final --window-start '2026-03-17T18:00:00'. Summarize: servers rebooted, failures, pending patches. Flag any issues.",
+      "timeoutSeconds": 180
+    },
+    "delivery": {
+      "mode": "announce"
+    },
+    "enabled": true
+  },
+  {
+    "name": "BA Folding Cartons Inc. - Maintenance Start",
+    "orgId": 14,
+    "schedule": {
+      "kind": "at",
+      "at": "2026-03-20T18:00:00-05:00"
+    },
+    "sessionTarget": "isolated",
+    "payload": {
+      "kind": "agentTurn",
+      "message": "BA Folding Cartons Inc. maintenance window starting NOW (18:00-20:00 EST). Run the NinjaRMM maintenance monitor for org 14 and report baseline status. Use: ~/.openclaw/workspace/skills/ninja-rmm/scripts/maintenance-monitor.sh --org 14 --phase scan --window-start '2026-03-20T18:00:00'",
+      "timeoutSeconds": 120
+    },
+    "delivery": {
+      "mode": "announce"
+    },
+    "enabled": true
+  },
+  {
+    "name": "BA Folding Cartons Inc. - Patch Check",
+    "orgId": 14,
+    "schedule": {
+      "kind": "at",
+      "at": "2026-03-20T18:30:00-05:00"
+    },
+    "sessionTarget": "isolated",
+    "payload": {
+      "kind": "agentTurn",
+      "message": "BA Folding Cartons Inc. maintenance - 30 min in. Check patch progress for org 14. Use: ~/.openclaw/workspace/skills/ninja-rmm/scripts/maintenance-monitor.sh --org 14 --phase patch --window-start '2026-03-20T18:00:00'. Report any issues.",
+      "timeoutSeconds": 120
+    },
+    "delivery": {
+      "mode": "announce"
+    },
+    "enabled": true
+  },
+  {
+    "name": "BA Folding Cartons Inc. - Reboot Check",
+    "orgId": 14,
+    "schedule": {
+      "kind": "at",
+      "at": "2026-03-20T19:15:00-05:00"
+    },
+    "sessionTarget": "isolated",
+    "payload": {
+      "kind": "agentTurn",
+      "message": "BA Folding Cartons Inc. maintenance - 75 min in. Check reboot status for org 14. Use: ~/.openclaw/workspace/skills/ninja-rmm/scripts/maintenance-monitor.sh --org 14 --phase reboot --window-start '2026-03-20T18:00:00'. Report which servers rebooted.",
+      "timeoutSeconds": 120
+    },
+    "delivery": {
+      "mode": "announce"
+    },
+    "enabled": true
+  },
+  {
+    "name": "BA Folding Cartons Inc. - Final Report",
+    "orgId": 14,
+    "schedule": {
+      "kind": "at",
+      "at": "2026-03-20T20:15:00-05:00"
+    },
+    "sessionTarget": "isolated",
+    "payload": {
+      "kind": "agentTurn",
+      "message": "BA Folding Cartons Inc. maintenance window ENDED. Generate final report for org 14. Use: ~/.openclaw/workspace/skills/ninja-rmm/scripts/maintenance-monitor.sh --org 14 --phase final --window-start '2026-03-20T18:00:00'. Summarize: servers rebooted, failures, pending patches. Flag any issues.",
+      "timeoutSeconds": 180
+    },
+    "delivery": {
+      "mode": "announce"
+    },
+    "enabled": true
+  },
+  {
+    "name": "Breadner Trailers - Maintenance Start",
+    "orgId": 8,
+    "schedule": {
+      "kind": "at",
+      "at": "2026-03-06T18:00:00-05:00"
+    },
+    "sessionTarget": "isolated",
+    "payload": {
+      "kind": "agentTurn",
+      "message": "Breadner Trailers maintenance window starting NOW (18:00-20:00 EST). Run the NinjaRMM maintenance monitor for org 8 and report baseline status. Use: ~/.openclaw/workspace/skills/ninja-rmm/scripts/maintenance-monitor.sh --org 8 --phase scan --window-start '2026-03-06T18:00:00'",
+      "timeoutSeconds": 120
+    },
+    "delivery": {
+      "mode": "announce"
+    },
+    "enabled": true
+  },
+  {
+    "name": "Breadner Trailers - Patch Check",
+    "orgId": 8,
+    "schedule": {
+      "kind": "at",
+      "at": "2026-03-06T18:30:00-05:00"
+    },
+    "sessionTarget": "isolated",
+    "payload": {
+      "kind": "agentTurn",
+      "message": "Breadner Trailers maintenance - 30 min in. Check patch progress for org 8. Use: ~/.openclaw/workspace/skills/ninja-rmm/scripts/maintenance-monitor.sh --org 8 --phase patch --window-start '2026-03-06T18:00:00'. Report any issues.",
+      "timeoutSeconds": 120
+    },
+    "delivery": {
+      "mode": "announce"
+    },
+    "enabled": true
+  },
+  {
+    "name": "Breadner Trailers - Reboot Check",
+    "orgId": 8,
+    "schedule": {
+      "kind": "at",
+      "at": "2026-03-06T19:15:00-05:00"
+    },
+    "sessionTarget": "isolated",
+    "payload": {
+      "kind": "agentTurn",
+      "message": "Breadner Trailers maintenance - 75 min in. Check reboot status for org 8. Use: ~/.openclaw/workspace/skills/ninja-rmm/scripts/maintenance-monitor.sh --org 8 --phase reboot --window-start '2026-03-06T18:00:00'. Report which servers rebooted.",
+      "timeoutSeconds": 120
+    },
+    "delivery": {
+      "mode": "announce"
+    },
+    "enabled": true
+  },
+  {
+    "name": "Breadner Trailers - Final Report",
+    "orgId": 8,
+    "schedule": {
+      "kind": "at",
+      "at": "2026-03-06T20:15:00-05:00"
+    },
+    "sessionTarget": "isolated",
+    "payload": {
+      "kind": "agentTurn",
+      "message": "Breadner Trailers maintenance window ENDED. Generate final report for org 8. Use: ~/.openclaw/workspace/skills/ninja-rmm/scripts/maintenance-monitor.sh --org 8 --phase final --window-start '2026-03-06T18:00:00'. Summarize: servers rebooted, failures, pending patches. Flag any issues.",
+      "timeoutSeconds": 180
+    },
+    "delivery": {
+      "mode": "announce"
+    },
+    "enabled": true
+  },
+  {
+    "name": "Building Knowledge - Maintenance Start",
+    "orgId": 17,
+    "schedule": {
+      "kind": "at",
+      "at": "2026-03-17T19:00:00-05:00"
+    },
+    "sessionTarget": "isolated",
+    "payload": {
+      "kind": "agentTurn",
+      "message": "Building Knowledge maintenance window starting NOW (19:00-21:00 EST). Run the NinjaRMM maintenance monitor for org 17 and report baseline status. Use: ~/.openclaw/workspace/skills/ninja-rmm/scripts/maintenance-monitor.sh --org 17 --phase scan --window-start '2026-03-17T19:00:00'",
+      "timeoutSeconds": 120
+    },
+    "delivery": {
+      "mode": "announce"
+    },
+    "enabled": true
+  },
+  {
+    "name": "Building Knowledge - Patch Check",
+    "orgId": 17,
+    "schedule": {
+      "kind": "at",
+      "at": "2026-03-17T19:30:00-05:00"
+    },
+    "sessionTarget": "isolated",
+    "payload": {
+      "kind": "agentTurn",
+      "message": "Building Knowledge maintenance - 30 min in. Check patch progress for org 17. Use: ~/.openclaw/workspace/skills/ninja-rmm/scripts/maintenance-monitor.sh --org 17 --phase patch --window-start '2026-03-17T19:00:00'. Report any issues.",
+      "timeoutSeconds": 120
+    },
+    "delivery": {
+      "mode": "announce"
+    },
+    "enabled": true
+  },
+  {
+    "name": "Building Knowledge - Reboot Check",
+    "orgId": 17,
+    "schedule": {
+      "kind": "at",
+      "at": "2026-03-17T20:15:00-05:00"
+    },
+    "sessionTarget": "isolated",
+    "payload": {
+      "kind": "agentTurn",
+      "message": "Building Knowledge maintenance - 75 min in. Check reboot status for org 17. Use: ~/.openclaw/workspace/skills/ninja-rmm/scripts/maintenance-monitor.sh --org 17 --phase reboot --window-start '2026-03-17T19:00:00'. Report which servers rebooted.",
+      "timeoutSeconds": 120
+    },
+    "delivery": {
+      "mode": "announce"
+    },
+    "enabled": true
+  },
+  {
+    "name": "Building Knowledge - Final Report",
+    "orgId": 17,
+    "schedule": {
+      "kind": "at",
+      "at": "2026-03-17T21:15:00-05:00"
+    },
+    "sessionTarget": "isolated",
+    "payload": {
+      "kind": "agentTurn",
+      "message": "Building Knowledge maintenance window ENDED. Generate final report for org 17. Use: ~/.openclaw/workspace/skills/ninja-rmm/scripts/maintenance-monitor.sh --org 17 --phase final --window-start '2026-03-17T19:00:00'. Summarize: servers rebooted, failures, pending patches. Flag any issues.",
+      "timeoutSeconds": 180
+    },
+    "delivery": {
+      "mode": "announce"
+    },
+    "enabled": true
+  },
+  {
+    "name": "Community Support Connections - Maintenance Start",
+    "orgId": 10,
+    "schedule": {
+      "kind": "at",
+      "at": "2026-03-03T18:00:00-05:00"
+    },
+    "sessionTarget": "isolated",
+    "payload": {
+      "kind": "agentTurn",
+      "message": "Community Support Connections maintenance window starting NOW (18:00-20:00 EST). Run the NinjaRMM maintenance monitor for org 10 and report baseline status. Use: ~/.openclaw/workspace/skills/ninja-rmm/scripts/maintenance-monitor.sh --org 10 --phase scan --window-start '2026-03-03T18:00:00'",
+      "timeoutSeconds": 120
+    },
+    "delivery": {
+      "mode": "announce"
+    },
+    "enabled": true
+  },
+  {
+    "name": "Community Support Connections - Patch Check",
+    "orgId": 10,
+    "schedule": {
+      "kind": "at",
+      "at": "2026-03-03T18:30:00-05:00"
+    },
+    "sessionTarget": "isolated",
+    "payload": {
+      "kind": "agentTurn",
+      "message": "Community Support Connections maintenance - 30 min in. Check patch progress for org 10. Use: ~/.openclaw/workspace/skills/ninja-rmm/scripts/maintenance-monitor.sh --org 10 --phase patch --window-start '2026-03-03T18:00:00'. Report any issues.",
+      "timeoutSeconds": 120
+    },
+    "delivery": {
+      "mode": "announce"
+    },
+    "enabled": true
+  },
+  {
+    "name": "Community Support Connections - Reboot Check",
+    "orgId": 10,
+    "schedule": {
+      "kind": "at",
+      "at": "2026-03-03T19:15:00-05:00"
+    },
+    "sessionTarget": "isolated",
+    "payload": {
+      "kind": "agentTurn",
+      "message": "Community Support Connections maintenance - 75 min in. Check reboot status for org 10. Use: ~/.openclaw/workspace/skills/ninja-rmm/scripts/maintenance-monitor.sh --org 10 --phase reboot --window-start '2026-03-03T18:00:00'. Report which servers rebooted.",
+      "timeoutSeconds": 120
+    },
+    "delivery": {
+      "mode": "announce"
+    },
+    "enabled": true
+  },
+  {
+    "name": "Community Support Connections - Final Report",
+    "orgId": 10,
+    "schedule": {
+      "kind": "at",
+      "at": "2026-03-03T20:15:00-05:00"
+    },
+    "sessionTarget": "isolated",
+    "payload": {
+      "kind": "agentTurn",
+      "message": "Community Support Connections maintenance window ENDED. Generate final report for org 10. Use: ~/.openclaw/workspace/skills/ninja-rmm/scripts/maintenance-monitor.sh --org 10 --phase final --window-start '2026-03-03T18:00:00'. Summarize: servers rebooted, failures, pending patches. Flag any issues.",
+      "timeoutSeconds": 180
+    },
+    "delivery": {
+      "mode": "announce"
+    },
+    "enabled": true
+  },
+  {
+    "name": "Delta Elevator Co Ltd - Maintenance Start",
+    "orgId": 20,
+    "schedule": {
+      "kind": "at",
+      "at": "2026-03-21T20:00:00-05:00"
+    },
+    "sessionTarget": "isolated",
+    "payload": {
+      "kind": "agentTurn",
+      "message": "Delta Elevator Co Ltd maintenance window starting NOW (20:00-23:59 EST). Run the NinjaRMM maintenance monitor for org 20 and report baseline status. Use: ~/.openclaw/workspace/skills/ninja-rmm/scripts/maintenance-monitor.sh --org 20 --phase scan --window-start '2026-03-21T20:00:00'",
+      "timeoutSeconds": 120
+    },
+    "delivery": {
+      "mode": "announce"
+    },
+    "enabled": true
+  },
+  {
+    "name": "Delta Elevator Co Ltd - Patch Check",
+    "orgId": 20,
+    "schedule": {
+      "kind": "at",
+      "at": "2026-03-21T20:30:00-05:00"
+    },
+    "sessionTarget": "isolated",
+    "payload": {
+      "kind": "agentTurn",
+      "message": "Delta Elevator Co Ltd maintenance - 30 min in. Check patch progress for org 20. Use: ~/.openclaw/workspace/skills/ninja-rmm/scripts/maintenance-monitor.sh --org 20 --phase patch --window-start '2026-03-21T20:00:00'. Report any issues.",
+      "timeoutSeconds": 120
+    },
+    "delivery": {
+      "mode": "announce"
+    },
+    "enabled": true
+  },
+  {
+    "name": "Delta Elevator Co Ltd - Reboot Check",
+    "orgId": 20,
+    "schedule": {
+      "kind": "at",
+      "at": "2026-03-21T21:15:00-05:00"
+    },
+    "sessionTarget": "isolated",
+    "payload": {
+      "kind": "agentTurn",
+      "message": "Delta Elevator Co Ltd maintenance - 75 min in. Check reboot status for org 20. Use: ~/.openclaw/workspace/skills/ninja-rmm/scripts/maintenance-monitor.sh --org 20 --phase reboot --window-start '2026-03-21T20:00:00'. Report which servers rebooted.",
+      "timeoutSeconds": 120
+    },
+    "delivery": {
+      "mode": "announce"
+    },
+    "enabled": true
+  },
+  {
+    "name": "Delta Elevator Co Ltd - Final Report",
+    "orgId": 20,
+    "schedule": {
+      "kind": "at",
+      "at": "2026-03-22T00:14:00-05:00"
+    },
+    "sessionTarget": "isolated",
+    "payload": {
+      "kind": "agentTurn",
+      "message": "Delta Elevator Co Ltd maintenance window ENDED. Generate final report for org 20. Use: ~/.openclaw/workspace/skills/ninja-rmm/scripts/maintenance-monitor.sh --org 20 --phase final --window-start '2026-03-21T20:00:00'. Summarize: servers rebooted, failures, pending patches. Flag any issues.",
+      "timeoutSeconds": 180
+    },
+    "delivery": {
+      "mode": "announce"
+    },
+    "enabled": true
+  },
+  {
+    "name": "Gemstar Group - Maintenance Start",
+    "orgId": 22,
+    "schedule": {
+      "kind": "at",
+      "at": "2026-03-05T19:00:00-05:00"
+    },
+    "sessionTarget": "isolated",
+    "payload": {
+      "kind": "agentTurn",
+      "message": "Gemstar Group maintenance window starting NOW (19:00-20:00 EST). Run the NinjaRMM maintenance monitor for org 22 and report baseline status. Use: ~/.openclaw/workspace/skills/ninja-rmm/scripts/maintenance-monitor.sh --org 22 --phase scan --window-start '2026-03-05T19:00:00'",
+      "timeoutSeconds": 120
+    },
+    "delivery": {
+      "mode": "announce"
+    },
+    "enabled": true
+  },
+  {
+    "name": "Gemstar Group - Patch Check",
+    "orgId": 22,
+    "schedule": {
+      "kind": "at",
+      "at": "2026-03-05T19:30:00-05:00"
+    },
+    "sessionTarget": "isolated",
+    "payload": {
+      "kind": "agentTurn",
+      "message": "Gemstar Group maintenance - 30 min in. Check patch progress for org 22. Use: ~/.openclaw/workspace/skills/ninja-rmm/scripts/maintenance-monitor.sh --org 22 --phase patch --window-start '2026-03-05T19:00:00'. Report any issues.",
+      "timeoutSeconds": 120
+    },
+    "delivery": {
+      "mode": "announce"
+    },
+    "enabled": true
+  },
+  {
+    "name": "Gemstar Group - Reboot Check",
+    "orgId": 22,
+    "schedule": {
+      "kind": "at",
+      "at": "2026-03-05T20:15:00-05:00"
+    },
+    "sessionTarget": "isolated",
+    "payload": {
+      "kind": "agentTurn",
+      "message": "Gemstar Group maintenance - 75 min in. Check reboot status for org 22. Use: ~/.openclaw/workspace/skills/ninja-rmm/scripts/maintenance-monitor.sh --org 22 --phase reboot --window-start '2026-03-05T19:00:00'. Report which servers rebooted.",
+      "timeoutSeconds": 120
+    },
+    "delivery": {
+      "mode": "announce"
+    },
+    "enabled": true
+  },
+  {
+    "name": "Gemstar Group - Final Report",
+    "orgId": 22,
+    "schedule": {
+      "kind": "at",
+      "at": "2026-03-05T20:15:00-05:00"
+    },
+    "sessionTarget": "isolated",
+    "payload": {
+      "kind": "agentTurn",
+      "message": "Gemstar Group maintenance window ENDED. Generate final report for org 22. Use: ~/.openclaw/workspace/skills/ninja-rmm/scripts/maintenance-monitor.sh --org 22 --phase final --window-start '2026-03-05T19:00:00'. Summarize: servers rebooted, failures, pending patches. Flag any issues.",
+      "timeoutSeconds": 180
+    },
+    "delivery": {
+      "mode": "announce"
+    },
+    "enabled": true
+  },
+  {
+    "name": "Magic Lite (2003) Ltd. - Maintenance Start",
+    "orgId": 26,
+    "schedule": {
+      "kind": "at",
+      "at": "2026-03-19T18:00:00-05:00"
+    },
+    "sessionTarget": "isolated",
+    "payload": {
+      "kind": "agentTurn",
+      "message": "Magic Lite (2003) Ltd. maintenance window starting NOW (18:00-20:00 EST). Run the NinjaRMM maintenance monitor for org 26 and report baseline status. Use: ~/.openclaw/workspace/skills/ninja-rmm/scripts/maintenance-monitor.sh --org 26 --phase scan --window-start '2026-03-19T18:00:00'",
+      "timeoutSeconds": 120
+    },
+    "delivery": {
+      "mode": "announce"
+    },
+    "enabled": true
+  },
+  {
+    "name": "Magic Lite (2003) Ltd. - Patch Check",
+    "orgId": 26,
+    "schedule": {
+      "kind": "at",
+      "at": "2026-03-19T18:30:00-05:00"
+    },
+    "sessionTarget": "isolated",
+    "payload": {
+      "kind": "agentTurn",
+      "message": "Magic Lite (2003) Ltd. maintenance - 30 min in. Check patch progress for org 26. Use: ~/.openclaw/workspace/skills/ninja-rmm/scripts/maintenance-monitor.sh --org 26 --phase patch --window-start '2026-03-19T18:00:00'. Report any issues.",
+      "timeoutSeconds": 120
+    },
+    "delivery": {
+      "mode": "announce"
+    },
+    "enabled": true
+  },
+  {
+    "name": "Magic Lite (2003) Ltd. - Reboot Check",
+    "orgId": 26,
+    "schedule": {
+      "kind": "at",
+      "at": "2026-03-19T19:15:00-05:00"
+    },
+    "sessionTarget": "isolated",
+    "payload": {
+      "kind": "agentTurn",
+      "message": "Magic Lite (2003) Ltd. maintenance - 75 min in. Check reboot status for org 26. Use: ~/.openclaw/workspace/skills/ninja-rmm/scripts/maintenance-monitor.sh --org 26 --phase reboot --window-start '2026-03-19T18:00:00'. Report which servers rebooted.",
+      "timeoutSeconds": 120
+    },
+    "delivery": {
+      "mode": "announce"
+    },
+    "enabled": true
+  },
+  {
+    "name": "Magic Lite (2003) Ltd. - Final Report",
+    "orgId": 26,
+    "schedule": {
+      "kind": "at",
+      "at": "2026-03-19T20:15:00-05:00"
+    },
+    "sessionTarget": "isolated",
+    "payload": {
+      "kind": "agentTurn",
+      "message": "Magic Lite (2003) Ltd. maintenance window ENDED. Generate final report for org 26. Use: ~/.openclaw/workspace/skills/ninja-rmm/scripts/maintenance-monitor.sh --org 26 --phase final --window-start '2026-03-19T18:00:00'. Summarize: servers rebooted, failures, pending patches. Flag any issues.",
+      "timeoutSeconds": 180
+    },
+    "delivery": {
+      "mode": "announce"
+    },
+    "enabled": true
+  },
+  {
+    "name": "Primespec Distribution Inc. - Maintenance Start",
+    "orgId": 35,
+    "schedule": {
+      "kind": "at",
+      "at": "2026-03-23T17:00:00-05:00"
+    },
+    "sessionTarget": "isolated",
+    "payload": {
+      "kind": "agentTurn",
+      "message": "Primespec Distribution Inc. maintenance window starting NOW (17:00-19:00 EST). Run the NinjaRMM maintenance monitor for org 35 and report baseline status. Use: ~/.openclaw/workspace/skills/ninja-rmm/scripts/maintenance-monitor.sh --org 35 --phase scan --window-start '2026-03-23T17:00:00'",
+      "timeoutSeconds": 120
+    },
+    "delivery": {
+      "mode": "announce"
+    },
+    "enabled": true
+  },
+  {
+    "name": "Primespec Distribution Inc. - Patch Check",
+    "orgId": 35,
+    "schedule": {
+      "kind": "at",
+      "at": "2026-03-23T17:30:00-05:00"
+    },
+    "sessionTarget": "isolated",
+    "payload": {
+      "kind": "agentTurn",
+      "message": "Primespec Distribution Inc. maintenance - 30 min in. Check patch progress for org 35. Use: ~/.openclaw/workspace/skills/ninja-rmm/scripts/maintenance-monitor.sh --org 35 --phase patch --window-start '2026-03-23T17:00:00'. Report any issues.",
+      "timeoutSeconds": 120
+    },
+    "delivery": {
+      "mode": "announce"
+    },
+    "enabled": true
+  },
+  {
+    "name": "Primespec Distribution Inc. - Reboot Check",
+    "orgId": 35,
+    "schedule": {
+      "kind": "at",
+      "at": "2026-03-23T18:15:00-05:00"
+    },
+    "sessionTarget": "isolated",
+    "payload": {
+      "kind": "agentTurn",
+      "message": "Primespec Distribution Inc. maintenance - 75 min in. Check reboot status for org 35. Use: ~/.openclaw/workspace/skills/ninja-rmm/scripts/maintenance-monitor.sh --org 35 --phase reboot --window-start '2026-03-23T17:00:00'. Report which servers rebooted.",
+      "timeoutSeconds": 120
+    },
+    "delivery": {
+      "mode": "announce"
+    },
+    "enabled": true
+  },
+  {
+    "name": "Primespec Distribution Inc. - Final Report",
+    "orgId": 35,
+    "schedule": {
+      "kind": "at",
+      "at": "2026-03-23T19:15:00-05:00"
+    },
+    "sessionTarget": "isolated",
+    "payload": {
+      "kind": "agentTurn",
+      "message": "Primespec Distribution Inc. maintenance window ENDED. Generate final report for org 35. Use: ~/.openclaw/workspace/skills/ninja-rmm/scripts/maintenance-monitor.sh --org 35 --phase final --window-start '2026-03-23T17:00:00'. Summarize: servers rebooted, failures, pending patches. Flag any issues.",
+      "timeoutSeconds": 180
+    },
+    "delivery": {
+      "mode": "announce"
+    },
+    "enabled": true
+  },
+  {
+    "name": "Pund-IT Corporate - Maintenance Start",
+    "orgId": 2,
+    "schedule": {
+      "kind": "at",
+      "at": "2026-03-04T17:00:00-05:00"
+    },
+    "sessionTarget": "isolated",
+    "payload": {
+      "kind": "agentTurn",
+      "message": "Pund-IT Corporate maintenance window starting NOW (17:00-19:00 EST). Run the NinjaRMM maintenance monitor for org 2 and report baseline status. Use: ~/.openclaw/workspace/skills/ninja-rmm/scripts/maintenance-monitor.sh --org 2 --phase scan --window-start '2026-03-04T17:00:00'",
+      "timeoutSeconds": 120
+    },
+    "delivery": {
+      "mode": "announce"
+    },
+    "enabled": true
+  },
+  {
+    "name": "Pund-IT Corporate - Patch Check",
+    "orgId": 2,
+    "schedule": {
+      "kind": "at",
+      "at": "2026-03-04T17:30:00-05:00"
+    },
+    "sessionTarget": "isolated",
+    "payload": {
+      "kind": "agentTurn",
+      "message": "Pund-IT Corporate maintenance - 30 min in. Check patch progress for org 2. Use: ~/.openclaw/workspace/skills/ninja-rmm/scripts/maintenance-monitor.sh --org 2 --phase patch --window-start '2026-03-04T17:00:00'. Report any issues.",
+      "timeoutSeconds": 120
+    },
+    "delivery": {
+      "mode": "announce"
+    },
+    "enabled": true
+  },
+  {
+    "name": "Pund-IT Corporate - Reboot Check",
+    "orgId": 2,
+    "schedule": {
+      "kind": "at",
+      "at": "2026-03-04T18:15:00-05:00"
+    },
+    "sessionTarget": "isolated",
+    "payload": {
+      "kind": "agentTurn",
+      "message": "Pund-IT Corporate maintenance - 75 min in. Check reboot status for org 2. Use: ~/.openclaw/workspace/skills/ninja-rmm/scripts/maintenance-monitor.sh --org 2 --phase reboot --window-start '2026-03-04T17:00:00'. Report which servers rebooted.",
+      "timeoutSeconds": 120
+    },
+    "delivery": {
+      "mode": "announce"
+    },
+    "enabled": true
+  },
+  {
+    "name": "Pund-IT Corporate - Final Report",
+    "orgId": 2,
+    "schedule": {
+      "kind": "at",
+      "at": "2026-03-04T19:15:00-05:00"
+    },
+    "sessionTarget": "isolated",
+    "payload": {
+      "kind": "agentTurn",
+      "message": "Pund-IT Corporate maintenance window ENDED. Generate final report for org 2. Use: ~/.openclaw/workspace/skills/ninja-rmm/scripts/maintenance-monitor.sh --org 2 --phase final --window-start '2026-03-04T17:00:00'. Summarize: servers rebooted, failures, pending patches. Flag any issues.",
+      "timeoutSeconds": 180
+    },
+    "delivery": {
+      "mode": "announce"
+    },
+    "enabled": true
+  },
+  {
+    "name": "SAF Drives Inc - Maintenance Start",
+    "orgId": 60,
+    "schedule": {
+      "kind": "at",
+      "at": "2026-03-18T18:00:00-05:00"
+    },
+    "sessionTarget": "isolated",
+    "payload": {
+      "kind": "agentTurn",
+      "message": "SAF Drives Inc maintenance window starting NOW (18:00-20:00 EST). Run the NinjaRMM maintenance monitor for org 60 and report baseline status. Use: ~/.openclaw/workspace/skills/ninja-rmm/scripts/maintenance-monitor.sh --org 60 --phase scan --window-start '2026-03-18T18:00:00'",
+      "timeoutSeconds": 120
+    },
+    "delivery": {
+      "mode": "announce"
+    },
+    "enabled": true
+  },
+  {
+    "name": "SAF Drives Inc - Patch Check",
+    "orgId": 60,
+    "schedule": {
+      "kind": "at",
+      "at": "2026-03-18T18:30:00-05:00"
+    },
+    "sessionTarget": "isolated",
+    "payload": {
+      "kind": "agentTurn",
+      "message": "SAF Drives Inc maintenance - 30 min in. Check patch progress for org 60. Use: ~/.openclaw/workspace/skills/ninja-rmm/scripts/maintenance-monitor.sh --org 60 --phase patch --window-start '2026-03-18T18:00:00'. Report any issues.",
+      "timeoutSeconds": 120
+    },
+    "delivery": {
+      "mode": "announce"
+    },
+    "enabled": true
+  },
+  {
+    "name": "SAF Drives Inc - Reboot Check",
+    "orgId": 60,
+    "schedule": {
+      "kind": "at",
+      "at": "2026-03-18T19:15:00-05:00"
+    },
+    "sessionTarget": "isolated",
+    "payload": {
+      "kind": "agentTurn",
+      "message": "SAF Drives Inc maintenance - 75 min in. Check reboot status for org 60. Use: ~/.openclaw/workspace/skills/ninja-rmm/scripts/maintenance-monitor.sh --org 60 --phase reboot --window-start '2026-03-18T18:00:00'. Report which servers rebooted.",
+      "timeoutSeconds": 120
+    },
+    "delivery": {
+      "mode": "announce"
+    },
+    "enabled": true
+  },
+  {
+    "name": "SAF Drives Inc - Final Report",
+    "orgId": 60,
+    "schedule": {
+      "kind": "at",
+      "at": "2026-03-18T20:15:00-05:00"
+    },
+    "sessionTarget": "isolated",
+    "payload": {
+      "kind": "agentTurn",
+      "message": "SAF Drives Inc maintenance window ENDED. Generate final report for org 60. Use: ~/.openclaw/workspace/skills/ninja-rmm/scripts/maintenance-monitor.sh --org 60 --phase final --window-start '2026-03-18T18:00:00'. Summarize: servers rebooted, failures, pending patches. Flag any issues.",
+      "timeoutSeconds": 180
+    },
+    "delivery": {
+      "mode": "announce"
+    },
+    "enabled": true
+  },
+  {
+    "name": "Steed Standard Transport (SST) - Maintenance Start",
+    "orgId": 36,
+    "schedule": {
+      "kind": "at",
+      "at": "2026-03-23T17:30:00-05:00"
+    },
+    "sessionTarget": "isolated",
+    "payload": {
+      "kind": "agentTurn",
+      "message": "Steed Standard Transport (SST) maintenance window starting NOW (17:30-19:30 EST). Run the NinjaRMM maintenance monitor for org 36 and report baseline status. Use: ~/.openclaw/workspace/skills/ninja-rmm/scripts/maintenance-monitor.sh --org 36 --phase scan --window-start '2026-03-23T17:30:00'",
+      "timeoutSeconds": 120
+    },
+    "delivery": {
+      "mode": "announce"
+    },
+    "enabled": true
+  },
+  {
+    "name": "Steed Standard Transport (SST) - Patch Check",
+    "orgId": 36,
+    "schedule": {
+      "kind": "at",
+      "at": "2026-03-23T18:00:00-05:00"
+    },
+    "sessionTarget": "isolated",
+    "payload": {
+      "kind": "agentTurn",
+      "message": "Steed Standard Transport (SST) maintenance - 30 min in. Check patch progress for org 36. Use: ~/.openclaw/workspace/skills/ninja-rmm/scripts/maintenance-monitor.sh --org 36 --phase patch --window-start '2026-03-23T17:30:00'. Report any issues.",
+      "timeoutSeconds": 120
+    },
+    "delivery": {
+      "mode": "announce"
+    },
+    "enabled": true
+  },
+  {
+    "name": "Steed Standard Transport (SST) - Reboot Check",
+    "orgId": 36,
+    "schedule": {
+      "kind": "at",
+      "at": "2026-03-23T18:45:00-05:00"
+    },
+    "sessionTarget": "isolated",
+    "payload": {
+      "kind": "agentTurn",
+      "message": "Steed Standard Transport (SST) maintenance - 75 min in. Check reboot status for org 36. Use: ~/.openclaw/workspace/skills/ninja-rmm/scripts/maintenance-monitor.sh --org 36 --phase reboot --window-start '2026-03-23T17:30:00'. Report which servers rebooted.",
+      "timeoutSeconds": 120
+    },
+    "delivery": {
+      "mode": "announce"
+    },
+    "enabled": true
+  },
+  {
+    "name": "Steed Standard Transport (SST) - Final Report",
+    "orgId": 36,
+    "schedule": {
+      "kind": "at",
+      "at": "2026-03-23T19:45:00-05:00"
+    },
+    "sessionTarget": "isolated",
+    "payload": {
+      "kind": "agentTurn",
+      "message": "Steed Standard Transport (SST) maintenance window ENDED. Generate final report for org 36. Use: ~/.openclaw/workspace/skills/ninja-rmm/scripts/maintenance-monitor.sh --org 36 --phase final --window-start '2026-03-23T17:30:00'. Summarize: servers rebooted, failures, pending patches. Flag any issues.",
+      "timeoutSeconds": 180
+    },
+    "delivery": {
+      "mode": "announce"
+    },
+    "enabled": true
+  },
+  {
+    "name": "The Beat Goes On - Maintenance Start",
+    "orgId": 37,
+    "schedule": {
+      "kind": "at",
+      "at": "2026-03-25T19:00:00-05:00"
+    },
+    "sessionTarget": "isolated",
+    "payload": {
+      "kind": "agentTurn",
+      "message": "The Beat Goes On maintenance window starting NOW (19:00-20:00 EST). Run the NinjaRMM maintenance monitor for org 37 and report baseline status. Use: ~/.openclaw/workspace/skills/ninja-rmm/scripts/maintenance-monitor.sh --org 37 --phase scan --window-start '2026-03-25T19:00:00'",
+      "timeoutSeconds": 120
+    },
+    "delivery": {
+      "mode": "announce"
+    },
+    "enabled": true
+  },
+  {
+    "name": "The Beat Goes On - Patch Check",
+    "orgId": 37,
+    "schedule": {
+      "kind": "at",
+      "at": "2026-03-25T19:30:00-05:00"
+    },
+    "sessionTarget": "isolated",
+    "payload": {
+      "kind": "agentTurn",
+      "message": "The Beat Goes On maintenance - 30 min in. Check patch progress for org 37. Use: ~/.openclaw/workspace/skills/ninja-rmm/scripts/maintenance-monitor.sh --org 37 --phase patch --window-start '2026-03-25T19:00:00'. Report any issues.",
+      "timeoutSeconds": 120
+    },
+    "delivery": {
+      "mode": "announce"
+    },
+    "enabled": true
+  },
+  {
+    "name": "The Beat Goes On - Reboot Check",
+    "orgId": 37,
+    "schedule": {
+      "kind": "at",
+      "at": "2026-03-25T20:15:00-05:00"
+    },
+    "sessionTarget": "isolated",
+    "payload": {
+      "kind": "agentTurn",
+      "message": "The Beat Goes On maintenance - 75 min in. Check reboot status for org 37. Use: ~/.openclaw/workspace/skills/ninja-rmm/scripts/maintenance-monitor.sh --org 37 --phase reboot --window-start '2026-03-25T19:00:00'. Report which servers rebooted.",
+      "timeoutSeconds": 120
+    },
+    "delivery": {
+      "mode": "announce"
+    },
+    "enabled": true
+  },
+  {
+    "name": "The Beat Goes On - Final Report",
+    "orgId": 37,
+    "schedule": {
+      "kind": "at",
+      "at": "2026-03-25T20:15:00-05:00"
+    },
+    "sessionTarget": "isolated",
+    "payload": {
+      "kind": "agentTurn",
+      "message": "The Beat Goes On maintenance window ENDED. Generate final report for org 37. Use: ~/.openclaw/workspace/skills/ninja-rmm/scripts/maintenance-monitor.sh --org 37 --phase final --window-start '2026-03-25T19:00:00'. Summarize: servers rebooted, failures, pending patches. Flag any issues.",
+      "timeoutSeconds": 180
+    },
+    "delivery": {
+      "mode": "announce"
+    },
+    "enabled": true
+  },
+  {
+    "name": "Uni-Spray Systems Inc - Maintenance Start",
+    "orgId": 38,
+    "schedule": {
+      "kind": "at",
+      "at": "2026-03-26T18:30:00-05:00"
+    },
+    "sessionTarget": "isolated",
+    "payload": {
+      "kind": "agentTurn",
+      "message": "Uni-Spray Systems Inc maintenance window starting NOW (18:30-20:30 EST). Run the NinjaRMM maintenance monitor for org 38 and report baseline status. Use: ~/.openclaw/workspace/skills/ninja-rmm/scripts/maintenance-monitor.sh --org 38 --phase scan --window-start '2026-03-26T18:30:00'",
+      "timeoutSeconds": 120
+    },
+    "delivery": {
+      "mode": "announce"
+    },
+    "enabled": true
+  },
+  {
+    "name": "Uni-Spray Systems Inc - Patch Check",
+    "orgId": 38,
+    "schedule": {
+      "kind": "at",
+      "at": "2026-03-26T19:00:00-05:00"
+    },
+    "sessionTarget": "isolated",
+    "payload": {
+      "kind": "agentTurn",
+      "message": "Uni-Spray Systems Inc maintenance - 30 min in. Check patch progress for org 38. Use: ~/.openclaw/workspace/skills/ninja-rmm/scripts/maintenance-monitor.sh --org 38 --phase patch --window-start '2026-03-26T18:30:00'. Report any issues.",
+      "timeoutSeconds": 120
+    },
+    "delivery": {
+      "mode": "announce"
+    },
+    "enabled": true
+  },
+  {
+    "name": "Uni-Spray Systems Inc - Reboot Check",
+    "orgId": 38,
+    "schedule": {
+      "kind": "at",
+      "at": "2026-03-26T19:45:00-05:00"
+    },
+    "sessionTarget": "isolated",
+    "payload": {
+      "kind": "agentTurn",
+      "message": "Uni-Spray Systems Inc maintenance - 75 min in. Check reboot status for org 38. Use: ~/.openclaw/workspace/skills/ninja-rmm/scripts/maintenance-monitor.sh --org 38 --phase reboot --window-start '2026-03-26T18:30:00'. Report which servers rebooted.",
+      "timeoutSeconds": 120
+    },
+    "delivery": {
+      "mode": "announce"
+    },
+    "enabled": true
+  },
+  {
+    "name": "Uni-Spray Systems Inc - Final Report",
+    "orgId": 38,
+    "schedule": {
+      "kind": "at",
+      "at": "2026-03-26T20:45:00-05:00"
+    },
+    "sessionTarget": "isolated",
+    "payload": {
+      "kind": "agentTurn",
+      "message": "Uni-Spray Systems Inc maintenance window ENDED. Generate final report for org 38. Use: ~/.openclaw/workspace/skills/ninja-rmm/scripts/maintenance-monitor.sh --org 38 --phase final --window-start '2026-03-26T18:30:00'. Summarize: servers rebooted, failures, pending patches. Flag any issues.",
+      "timeoutSeconds": 180
+    },
+    "delivery": {
+      "mode": "announce"
+    },
+    "enabled": true
+  },
+  {
+    "name": "Wilride Transport Ltd. - Maintenance Start",
+    "orgId": 39,
+    "schedule": {
+      "kind": "at",
+      "at": "2026-03-26T19:00:00-05:00"
+    },
+    "sessionTarget": "isolated",
+    "payload": {
+      "kind": "agentTurn",
+      "message": "Wilride Transport Ltd. maintenance window starting NOW (19:00-21:00 EST). Run the NinjaRMM maintenance monitor for org 39 and report baseline status. Use: ~/.openclaw/workspace/skills/ninja-rmm/scripts/maintenance-monitor.sh --org 39 --phase scan --window-start '2026-03-26T19:00:00'",
+      "timeoutSeconds": 120
+    },
+    "delivery": {
+      "mode": "announce"
+    },
+    "enabled": true
+  },
+  {
+    "name": "Wilride Transport Ltd. - Patch Check",
+    "orgId": 39,
+    "schedule": {
+      "kind": "at",
+      "at": "2026-03-26T19:30:00-05:00"
+    },
+    "sessionTarget": "isolated",
+    "payload": {
+      "kind": "agentTurn",
+      "message": "Wilride Transport Ltd. maintenance - 30 min in. Check patch progress for org 39. Use: ~/.openclaw/workspace/skills/ninja-rmm/scripts/maintenance-monitor.sh --org 39 --phase patch --window-start '2026-03-26T19:00:00'. Report any issues.",
+      "timeoutSeconds": 120
+    },
+    "delivery": {
+      "mode": "announce"
+    },
+    "enabled": true
+  },
+  {
+    "name": "Wilride Transport Ltd. - Reboot Check",
+    "orgId": 39,
+    "schedule": {
+      "kind": "at",
+      "at": "2026-03-26T20:15:00-05:00"
+    },
+    "sessionTarget": "isolated",
+    "payload": {
+      "kind": "agentTurn",
+      "message": "Wilride Transport Ltd. maintenance - 75 min in. Check reboot status for org 39. Use: ~/.openclaw/workspace/skills/ninja-rmm/scripts/maintenance-monitor.sh --org 39 --phase reboot --window-start '2026-03-26T19:00:00'. Report which servers rebooted.",
+      "timeoutSeconds": 120
+    },
+    "delivery": {
+      "mode": "announce"
+    },
+    "enabled": true
+  },
+  {
+    "name": "Wilride Transport Ltd. - Final Report",
+    "orgId": 39,
+    "schedule": {
+      "kind": "at",
+      "at": "2026-03-26T21:15:00-05:00"
+    },
+    "sessionTarget": "isolated",
+    "payload": {
+      "kind": "agentTurn",
+      "message": "Wilride Transport Ltd. maintenance window ENDED. Generate final report for org 39. Use: ~/.openclaw/workspace/skills/ninja-rmm/scripts/maintenance-monitor.sh --org 39 --phase final --window-start '2026-03-26T19:00:00'. Summarize: servers rebooted, failures, pending patches. Flag any issues.",
+      "timeoutSeconds": 180
+    },
+    "delivery": {
+      "mode": "announce"
+    },
+    "enabled": true
+  },
+  {
+    "name": "Woeller Group - Maintenance Start",
+    "orgId": 52,
+    "schedule": {
+      "kind": "at",
+      "at": "2026-03-10T17:30:00-05:00"
+    },
+    "sessionTarget": "isolated",
+    "payload": {
+      "kind": "agentTurn",
+      "message": "Woeller Group maintenance window starting NOW (17:30-19:30 EST). Run the NinjaRMM maintenance monitor for org 52 and report baseline status. Use: ~/.openclaw/workspace/skills/ninja-rmm/scripts/maintenance-monitor.sh --org 52 --phase scan --window-start '2026-03-10T17:30:00'",
+      "timeoutSeconds": 120
+    },
+    "delivery": {
+      "mode": "announce"
+    },
+    "enabled": true
+  },
+  {
+    "name": "Woeller Group - Patch Check",
+    "orgId": 52,
+    "schedule": {
+      "kind": "at",
+      "at": "2026-03-10T18:00:00-05:00"
+    },
+    "sessionTarget": "isolated",
+    "payload": {
+      "kind": "agentTurn",
+      "message": "Woeller Group maintenance - 30 min in. Check patch progress for org 52. Use: ~/.openclaw/workspace/skills/ninja-rmm/scripts/maintenance-monitor.sh --org 52 --phase patch --window-start '2026-03-10T17:30:00'. Report any issues.",
+      "timeoutSeconds": 120
+    },
+    "delivery": {
+      "mode": "announce"
+    },
+    "enabled": true
+  },
+  {
+    "name": "Woeller Group - Reboot Check",
+    "orgId": 52,
+    "schedule": {
+      "kind": "at",
+      "at": "2026-03-10T18:45:00-05:00"
+    },
+    "sessionTarget": "isolated",
+    "payload": {
+      "kind": "agentTurn",
+      "message": "Woeller Group maintenance - 75 min in. Check reboot status for org 52. Use: ~/.openclaw/workspace/skills/ninja-rmm/scripts/maintenance-monitor.sh --org 52 --phase reboot --window-start '2026-03-10T17:30:00'. Report which servers rebooted.",
+      "timeoutSeconds": 120
+    },
+    "delivery": {
+      "mode": "announce"
+    },
+    "enabled": true
+  },
+  {
+    "name": "Woeller Group - Final Report",
+    "orgId": 52,
+    "schedule": {
+      "kind": "at",
+      "at": "2026-03-10T19:45:00-05:00"
+    },
+    "sessionTarget": "isolated",
+    "payload": {
+      "kind": "agentTurn",
+      "message": "Woeller Group maintenance window ENDED. Generate final report for org 52. Use: ~/.openclaw/workspace/skills/ninja-rmm/scripts/maintenance-monitor.sh --org 52 --phase final --window-start '2026-03-10T17:30:00'. Summarize: servers rebooted, failures, pending patches. Flag any issues.",
+      "timeoutSeconds": 180
+    },
+    "delivery": {
+      "mode": "announce"
+    },
+    "enabled": true
+  }
+]
