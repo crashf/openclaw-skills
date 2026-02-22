@@ -1,0 +1,22 @@
+{
+  "schedules": [
+    {
+      "name": "Primespec Distribution Inc.",
+      "orgId": 35,
+      "schedule": "4th Monday",
+      "startTime": "17:00",
+      "endTime": "19:00",
+      "timezone": "America/Toronto",
+      "notify": ["telegram"],
+      "enabled": true
+    }
+  ],
+  "defaults": {
+    "scanTimeoutMin": 15,
+    "patchTimeoutMin": 90,
+    "rebootTimeoutMin": 30,
+    "notifyOnStart": true,
+    "notifyOnComplete": true,
+    "notifyOnError": true
+  }
+}
