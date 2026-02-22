@@ -45,9 +45,9 @@ TOKEN=$(get_token)
 # Get org name
 ORG_NAME=$(curl -s -H "Authorization: Bearer $TOKEN" "https://${NINJA_INSTANCE}/v2/organization/${ORG_ID}" | jq -r '.name // "Unknown"')
 
-# Get Windows devices only (servers + workstations)
+# Get Windows Servers only (not workstations)
 DEVICES=$(curl -s -H "Authorization: Bearer $TOKEN" "https://${NINJA_INSTANCE}/v2/organization/${ORG_ID}/devices" \
-  | jq '[.[] | select(.nodeClass == "WINDOWS_SERVER" or .nodeClass == "WINDOWS_WORKSTATION")]')
+  | jq '[.[] | select(.nodeClass == "WINDOWS_SERVER")]')
 
 DEVICE_COUNT=$(echo "$DEVICES" | jq 'length')
 
