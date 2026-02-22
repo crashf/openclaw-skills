@@ -1,15 +1,183 @@
 {
   "schedules": [
     {
+      "name": "2287685 Ontario Inc",
+      "orgId": 3,
+      "schedule": "1st Thursday",
+      "startTime": "08:30",
+      "endTime": "09:30",
+      "timezone": "America/Toronto",
+      "enabled": true
+    },
+    {
+      "name": "Altanic Transportation Inc.",
+      "orgId": 7,
+      "schedule": "3rd Tuesday",
+      "startTime": "18:00",
+      "endTime": "20:00",
+      "timezone": "America/Toronto",
+      "enabled": true
+    },
+    {
+      "name": "BA Folding Cartons Inc.",
+      "orgId": 14,
+      "schedule": "3rd Friday",
+      "startTime": "18:00",
+      "endTime": "20:00",
+      "timezone": "America/Toronto",
+      "enabled": true
+    },
+    {
+      "name": "Breadner Trailers",
+      "orgId": 8,
+      "schedule": "1st Friday",
+      "startTime": "18:00",
+      "endTime": "20:00",
+      "timezone": "America/Toronto",
+      "enabled": true
+    },
+    {
+      "name": "Building Knowledge",
+      "orgId": 17,
+      "schedule": "3rd Tuesday",
+      "startTime": "19:00",
+      "endTime": "21:00",
+      "timezone": "America/Toronto",
+      "enabled": true
+    },
+    {
+      "name": "Community Support Connections",
+      "orgId": 10,
+      "schedule": "1st Tuesday",
+      "startTime": "18:00",
+      "endTime": "20:00",
+      "timezone": "America/Toronto",
+      "enabled": true
+    },
+    {
+      "name": "Delta Elevator Co Ltd",
+      "orgId": 20,
+      "schedule": "3rd Saturday",
+      "startTime": "20:00",
+      "endTime": "23:59",
+      "timezone": "America/Toronto",
+      "enabled": true
+    },
+    {
+      "name": "Gemstar Group",
+      "orgId": 22,
+      "schedule": "1st Thursday",
+      "startTime": "19:00",
+      "endTime": "20:00",
+      "timezone": "America/Toronto",
+      "enabled": true
+    },
+    {
+      "name": "Magic Lite (2003) Ltd.",
+      "orgId": 26,
+      "schedule": "3rd Thursday",
+      "startTime": "18:00",
+      "endTime": "20:00",
+      "timezone": "America/Toronto",
+      "enabled": true
+    },
+    {
       "name": "Primespec Distribution Inc.",
       "orgId": 35,
       "schedule": "4th Monday",
       "startTime": "17:00",
       "endTime": "19:00",
       "timezone": "America/Toronto",
-      "notify": ["telegram"],
+      "enabled": true
+    },
+    {
+      "name": "Pund-IT Corporate",
+      "orgId": 2,
+      "schedule": "1st Wednesday",
+      "startTime": "17:00",
+      "endTime": "19:00",
+      "timezone": "America/Toronto",
+      "enabled": true
+    },
+    {
+      "name": "SAF Drives Inc",
+      "orgId": 60,
+      "schedule": "3rd Wednesday",
+      "startTime": "18:00",
+      "endTime": "20:00",
+      "timezone": "America/Toronto",
+      "enabled": true
+    },
+    {
+      "name": "Steed Standard Transport (SST)",
+      "orgId": 36,
+      "schedule": "4th Monday",
+      "startTime": "17:30",
+      "endTime": "19:30",
+      "timezone": "America/Toronto",
+      "enabled": true
+    },
+    {
+      "name": "The Beat Goes On",
+      "orgId": 37,
+      "schedule": "4th Wednesday",
+      "startTime": "19:00",
+      "endTime": "20:00",
+      "timezone": "America/Toronto",
+      "enabled": true
+    },
+    {
+      "name": "Uni-Spray Systems Inc",
+      "orgId": 38,
+      "schedule": "4th Thursday",
+      "startTime": "18:30",
+      "endTime": "20:30",
+      "timezone": "America/Toronto",
+      "enabled": true
+    },
+    {
+      "name": "Wilride Transport Ltd.",
+      "orgId": 39,
+      "schedule": "4th Thursday",
+      "startTime": "19:00",
+      "endTime": "21:00",
+      "timezone": "America/Toronto",
+      "enabled": true
+    },
+    {
+      "name": "Woeller Group",
+      "orgId": 52,
+      "schedule": "2nd Tuesday",
+      "startTime": "17:30",
+      "endTime": "19:30",
+      "timezone": "America/Toronto",
       "enabled": true
     }
+  ],
+  "needsTimeConfirmation": [
+    {"name": "Interior Store Display (ISD)", "orgId": 25, "note": "No time specified in sheet"},
+    {"name": "JTS Mechanical Systems Inc.", "orgId": 65, "note": "No time specified in sheet"},
+    {"name": "M Machel & Associates", "orgId": 49, "note": "No time specified in sheet"},
+    {"name": "McCutchen & Pearce Professional Corp.", "orgId": 27, "note": "No time specified in sheet"},
+    {"name": "OnePoint Association of Realtors", "orgId": 13, "note": "No time specified in sheet"},
+    {"name": "Pfenning's Organic Vegetables Inc.", "orgId": 34, "note": "No time specified in sheet"},
+    {"name": "Think Green Solutions", "orgId": 68, "note": "No time specified in sheet"},
+    {"name": "Yardistry Limited", "orgId": 5, "note": "No time specified in sheet"}
+  ],
+  "excluded": [
+    {"name": "Barbarian Sports Wear", "reason": "Servers not managed"},
+    {"name": "Bob Ruthig", "reason": "No server"},
+    {"name": "Connection Network Agencies", "reason": "No server"},
+    {"name": "Eccomelt", "reason": "Servers not managed"},
+    {"name": "First Health Products Inc", "reason": "SpireServer - needs confirmation"},
+    {"name": "Genesis Comfort Care Inc", "reason": "No server"},
+    {"name": "Grand Valley Construction Association", "reason": "No server"},
+    {"name": "Morty's Pub", "reason": "No server or not managed"},
+    {"name": "NGF Canada Ltd.", "reason": "No server or not managed"},
+    {"name": "Orthopaedic Sport Institute", "reason": "No server or not managed"},
+    {"name": "RidgeTech Automation Inc.", "reason": "No server or not managed"},
+    {"name": "Sandaka Inc.", "reason": "Server not managed"},
+    {"name": "Urban Lights Inc.", "reason": "Server not managed"}
   ],
   "defaults": {
     "scanTimeoutMin": 15,
