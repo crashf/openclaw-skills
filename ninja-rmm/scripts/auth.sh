@@ -29,7 +29,7 @@ fi
 # Get new token
 RESPONSE=$(curl -s -X POST "https://${NINJA_INSTANCE}/oauth/token" \
   -H "Content-Type: application/x-www-form-urlencoded" \
-  -d "grant_type=client_credentials&client_id=${NINJA_CLIENT_ID}&client_secret=${NINJA_CLIENT_SECRET}&scope=monitoring%20management")
+  -d "grant_type=client_credentials&client_id=${NINJA_CLIENT_ID}&client_secret=${NINJA_CLIENT_SECRET}&scope=monitoring")
 
 # Check for error
 if echo "$RESPONSE" | jq -e '.error' > /dev/null 2>&1; then
