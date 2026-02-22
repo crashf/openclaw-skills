@@ -40,8 +40,11 @@ ln -sf /path/to/openclaw-skills/ninja-rmm ~/.openclaw/workspace/skills/ninja-rmm
 ```bash
 cd ~/.openclaw/workspace/skills/ninja-rmm/scripts
 
-# Generate jobs for a specific month
+# Generate jobs for a specific month (uses GPT-4o by default)
 python3 generate-cron-jobs.py --month 2026-04 --output ../config/april-2026-jobs.json
+
+# Use a different model
+python3 generate-cron-jobs.py --month 2026-04 --model sonnet
 
 # View the schedule
 cat ../config/april-2026-jobs.json | jq -r '.[] | select(.name | contains("Start")) | "\(.schedule.at): \(.name)"' | sort
@@ -133,12 +136,17 @@ The main monitoring script. Queries NinjaRMM for server status during maintenanc
 Generates OpenClaw cron job definitions from the maintenance config.
 
 ```bash
-# Generate for a specific month
+# Generate for a specific month (default model: github-copilot/gpt-4o)
 python3 generate-cron-jobs.py --month 2026-04
 
 # Save to file
 python3 generate-cron-jobs.py --month 2026-04 --output ../config/april-2026-jobs.json
+
+# Use a different model (e.g., sonnet for Claude)
+python3 generate-cron-jobs.py --month 2026-04 --model sonnet
 ```
+
+**Default model:** `github-copilot/gpt-4o` — cost-effective for API calls + reporting tasks.
 
 ### status.sh / alerts.sh / devices.sh
 

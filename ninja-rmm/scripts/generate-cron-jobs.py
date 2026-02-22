@@ -14,6 +14,7 @@ from pathlib import Path
 SCRIPT_DIR = Path(__file__).parent
 CONFIG_FILE = SCRIPT_DIR.parent / "config" / "maintenance-windows.json"
 MONITOR_SCRIPT = "~/.openclaw/workspace/skills/ninja-rmm/scripts/maintenance-monitor.sh"
+DEFAULT_MODEL = "github-copilot/gpt-4o"
 
 def nth_weekday(year: int, month: int, nth: int, weekday: int) -> datetime | None:
     """
@@ -61,7 +62,7 @@ def parse_schedule(schedule: str) -> tuple[int, int] | None:
         return None
     return (nth, weekday)
 
-def generate_jobs(year: int, month: int):
+def generate_jobs(year: int, month: int, model: str = DEFAULT_MODEL):
     """Generate cron job definitions for a month"""
     
     with open(CONFIG_FILE) as f:
@@ -115,6 +116,7 @@ def generate_jobs(year: int, month: int):
             "payload": {
                 "kind": "agentTurn",
                 "message": f"{name} maintenance window starting NOW ({start_time}-{end_time} EST). Run the NinjaRMM maintenance monitor for org {org_id} and report baseline status. Use: {MONITOR_SCRIPT} --org {org_id} --phase scan --window-start '{window_start}'",
+                "model": model,
                 "timeoutSeconds": 120
             },
             "delivery": {"mode": "announce"},
@@ -130,6 +132,7 @@ def generate_jobs(year: int, month: int):
             "payload": {
                 "kind": "agentTurn",
                 "message": f"{name} maintenance - 30 min in. Check patch progress for org {org_id}. Use: {MONITOR_SCRIPT} --org {org_id} --phase patch --window-start '{window_start}'. Report any issues.",
+                "model": model,
                 "timeoutSeconds": 120
             },
             "delivery": {"mode": "announce"},
@@ -145,6 +148,7 @@ def generate_jobs(year: int, month: int):
             "payload": {
                 "kind": "agentTurn",
                 "message": f"{name} maintenance - 75 min in. Check reboot status for org {org_id}. Use: {MONITOR_SCRIPT} --org {org_id} --phase reboot --window-start '{window_start}'. Report which servers rebooted.",
+                "model": model,
                 "timeoutSeconds": 120
             },
             "delivery": {"mode": "announce"},
@@ -160,6 +164,7 @@ def generate_jobs(year: int, month: int):
             "payload": {
                 "kind": "agentTurn",
                 "message": f"{name} maintenance window ENDED. Generate final report for org {org_id}. Use: {MONITOR_SCRIPT} --org {org_id} --phase final --window-start '{window_start}'. Summarize: servers rebooted, failures, pending patches. Flag any issues.",
+                "model": model,
                 "timeoutSeconds": 180
             },
             "delivery": {"mode": "announce"},
@@ -174,10 +179,11 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--month", default=datetime.now().strftime("%Y-%m"))
     parser.add_argument("--output", default="-")
+    parser.add_argument("--model", default=DEFAULT_MODEL, help=f"Model to use for jobs (default: {DEFAULT_MODEL})")
     args = parser.parse_args()
     
     year, month = map(int, args.month.split("-"))
-    jobs = generate_jobs(year, month)
+    jobs = generate_jobs(year, month, model=args.model)
     
     output = json.dumps(jobs, indent=2)
     
