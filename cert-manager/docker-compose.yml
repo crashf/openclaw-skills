@@ -1,0 +1,16 @@
+version: '3.9'
+
+services:
+  cert-manager:
+    image: pundit-cert-manager:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: pundit-cert-manager
+    environment:
+      - TZ=America/Toronto
+    volumes:
+      - ./config:/home/certbotuser/cert-manager/config
+      - ./certs:/home/certbotuser/cert-manager/certs
+      - ~/.ssh:/home/certbotuser/.ssh:ro
+    restart: unless-stopped
