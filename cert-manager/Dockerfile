@@ -8,11 +8,11 @@ RUN useradd -m certbotuser
 USER certbotuser
 WORKDIR /home/certbotuser
 
-COPY ./ /home/certbotuser/cert-manager/
+COPY --chown=certbotuser:certbotuser ./ /home/certbotuser/cert-manager/
 WORKDIR /home/certbotuser/cert-manager
 
 RUN curl -sL https://get.acme.sh | sh -s email=certs@pund-it.ca
 
-ENV PATH="$PATH:/home/certbotuser/.acme.sh"
+ENV PATH="/home/certbotuser/.acme.sh:$PATH"
 
 CMD ["./scripts/full-renewal.sh"]

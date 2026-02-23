@@ -46,11 +46,11 @@ if [[ -z "$CPANEL_USER" || "$CPANEL_USER" == "null" || -z "$CPANEL_TOKEN" || "$C
   exit 1
 fi
 
-# Install acme.sh if not present
+# Check for acme.sh (build-time install now required)
 ACME_HOME="${HOME}/.acme.sh"
 if [[ ! -f "$ACME_HOME/acme.sh" ]]; then
-  echo "📦 Installing acme.sh..."
-  curl -sL https://get.acme.sh | sh -s email=certs@pund-it.ca
+  echo "\U1F534 acme.sh missing! This should be pre-installed in the Docker build."
+  exit 1
 fi
 
 # Ensure cert output directory exists
