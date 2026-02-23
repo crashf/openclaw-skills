@@ -1,0 +1,50 @@
+{
+  "domain": "*.pund-it.ca",
+  "pfxPassword": "PundIT-Cert-2026!",
+  "certSharePath": "\\\\punsvscnfdc\\certs$",
+  "certLocalPath": "/root/.openclaw/workspace/skills/cert-manager/certs",
+  "cpanel": {
+    "hostname": "cpanel9.indieserve.net",
+    "port": 2087,
+    "username": "",
+    "apiToken": ""
+  },
+  "servers": [
+    {
+      "name": "punsvscnfdc",
+      "ip": "10.255.71.42",
+      "roles": ["veeam-cc", "screenconnect"],
+      "enabled": true
+    },
+    {
+      "name": "punsvkinf-spc",
+      "ip": "10.255.71.47",
+      "roles": ["veeam-cc"],
+      "enabled": true
+    },
+    {
+      "name": "punsvkinfcg",
+      "ip": "10.255.71.40",
+      "roles": ["veeam-cc"],
+      "enabled": true
+    },
+    {
+      "name": "punsvoffki-nfr",
+      "ip": "10.255.245.205",
+      "roles": ["veeam-cc"],
+      "enabled": true
+    },
+    {
+      "name": "punsvkiv2nf-nfr",
+      "ip": "10.255.71.45",
+      "roles": ["veeam-cc"],
+      "enabled": true
+    },
+    {
+      "name": "help.pund-it.ca",
+      "ip": "10.255.71.39",
+      "roles": ["screenconnect"],
+      "enabled": true
+    }
+  ]
+}
