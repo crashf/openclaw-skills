@@ -3,6 +3,16 @@
   "nodes": [
     {
       "parameters": {
+        "rule": "*/15 * * * *"
+      },
+      "id": "Cron",
+      "name": "Cron",
+      "type": "n8n-nodes-base.cron",
+      "typeVersion": 1,
+      "position": [120, 300]
+    },
+    {
+      "parameters": {
         "values": {
           "string": [
             {"name": "NINJA_CLIENT_ID", "value": ""},
@@ -16,6 +26,7 @@
           ]
         }
       },
+      "id": "SetConfig",
       "name": "Set Config",
       "type": "n8n-nodes-base.set",
       "typeVersion": 1,
@@ -23,63 +34,93 @@
     },
     {
       "parameters": {
-        "authentication": "headerAuth",
-        "requestMethod": "POST",
-        "url": "https://{{$json["NINJA_INSTANCE"]}}/oauth/token",
-        "jsonParameters": true,
-        "headerParametersJson": "{\n  \"Content-Type\": \"application/x-www-form-urlencoded\"\n}",
-        "bodyParametersJson": "{\n  \"grant_type\": \"client_credentials\",\n  \"client_id\": \"{{$json[\"NINJA_CLIENT_ID\"]}}\",\n  \"client_secret\": \"{{$json[\"NINJA_CLIENT_SECRET\"]}}\",\n  \"scope\": \"monitoring\"\n}",
-        "options": {}
+        "functionCode": "// Keep config in a nested object so we can merge after token fetch\nreturn [{ json: { config: $json } }];"
       },
+      "id": "StoreConfig",
+      "name": "Store Config",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [480, 220]
+    },
+    {
+      "parameters": {
+        "authentication": "none",
+        "requestMethod": "POST",
+        "url": "https://{{$json[\"NINJA_INSTANCE\"]}}/oauth/token",
+        "jsonParameters": false,
+        "options": {
+          "sendBodyAs": "form",
+          "responseFormat": "json"
+        },
+        "bodyParametersUi": {
+          "parameter": [
+            {"name": "grant_type", "value": "client_credentials"},
+            {"name": "client_id", "value": "={{$json[\"NINJA_CLIENT_ID\"]}}"},
+            {"name": "client_secret", "value": "={{$json[\"NINJA_CLIENT_SECRET\"]}}"},
+            {"name": "scope", "value": "monitoring"}
+          ]
+        }
+      },
+      "id": "GetToken",
       "name": "Get Token",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 3,
-      "position": [520, 300]
+      "position": [480, 380]
     },
     {
       "parameters": {
-        "authentication": "headerAuth",
-        "requestMethod": "GET",
-        "url": "https://{{$json["NINJA_INSTANCE"]}}/v2/organization/{{$json["ORG_ID"]}}/devices?pageSize=1000",
-        "jsonParameters": true,
-        "headerParametersJson": "{\n  \"Authorization\": \"Bearer {{$json[\"access_token\"]}}\"\n}",
-        "options": {}
+        "mode": "passThrough",
+        "propertyName": "token"
       },
+      "id": "MergeConfigAndToken",
+      "name": "Merge Config + Token",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2,
+      "position": [660, 300]
+    },
+    {
+      "parameters": {
+        "authentication": "none",
+        "requestMethod": "GET",
+        "url": "https://{{$json.config.NINJA_INSTANCE}}/v2/organization/{{$json.config.ORG_ID}}/devices?pageSize=1000",
+        "jsonParameters": true,
+        "headerParametersJson": "{\n  \"Authorization\": \"Bearer {{$json.token.access_token}}\"\n}"
+      },
+      "id": "ListDevices",
       "name": "List Devices",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 3,
-      "position": [740, 300]
+      "position": [840, 300]
     },
     {
       "parameters": {
-        "functionCode": "// Filter Windows servers\nconst devices = $json.results || $json.devices || $json;\nconst servers = (Array.isArray(devices) ? devices : []).filter(d => (d.nodeClass||'').includes('WINDOWS_SERVER'));
-return servers.map(d => ({ json: { deviceId: d.id, deviceName: d.systemName || 'Unknown', nodeClass: d.nodeClass }}));"
+        "functionCode": "const devices = $json.results || $json.devices || $json;\nconst servers = (Array.isArray(devices) ? devices : []).filter(d => (d.nodeClass||'').includes('WINDOWS_SERVER'));
+return servers.map(d => ({ json: { config: $json.config, token: $json.token, deviceId: d.id, deviceName: d.systemName || 'Unknown', nodeClass: d.nodeClass }}));"
       },
+      "id": "FilterServers",
       "name": "Filter Servers",
       "type": "n8n-nodes-base.function",
       "typeVersion": 1,
-      "position": [960, 300]
+      "position": [1020, 300]
     },
     {
       "parameters": {
-        "authentication": "headerAuth",
+        "authentication": "none",
         "requestMethod": "GET",
-        "url": "https://{{$json["NINJA_INSTANCE"]}}/v2/device/{{$json["deviceId"]}}/activities?pageSize=200",
+        "url": "https://{{$json.config.NINJA_INSTANCE}}/v2/device/{{$json.deviceId}}/activities?pageSize=200",
         "jsonParameters": true,
-        "headerParametersJson": "{\n  \"Authorization\": \"Bearer {{$json["access_token"]}}\"\n}",
-        "options": {}
+        "headerParametersJson": "{\n  \"Authorization\": \"Bearer {{$json.token.access_token}}\"\n}"
       },
+      "id": "FetchActivities",
       "name": "Fetch Activities",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 3,
-      "position": [1180, 300]
+      "position": [1200, 300]
     },
     {
       "parameters": {
-        "functionCode": "const start = new Date($json.WINDOW_START).getTime() / 1000;\nconst end = new Date($json.WINDOW_END).getTime() / 1000;\nconst acts = $json.activities || [];\nconst inWindow = acts.filter(a => (a.activityTime||0) >= start && (a.activityTime||0) <= end);\nconst hasReboot = inWindow.some(a => a.statusCode === 'SYSTEM_REBOOTED' || (/System rebooted/i).test(a.message||''));\nconst patchIssues = inWindow.filter(a => (a.activityResult === 'FAILURE') || (/FAILED|ERROR/i).test(a.statusCode||'') || (/download error|failed|blocked/i).test(a.message||''));\nconst postScan = inWindow.some(a => (/post reboot scan is required/i).test(a.message||''));\nif (!hasReboot && patchIssues.length === 0 && !postScan) {
-  return [];
-}
-const linkBase = $json.LINK_BASE || '';
+        "functionCode": "const start = new Date($json.config.WINDOW_START).getTime() / 1000;\nconst end = new Date($json.config.WINDOW_END).getTime() / 1000;\nconst acts = $json.activities || [];\nconst inWindow = acts.filter(a => (a.activityTime||0) >= start && (a.activityTime||0) <= end);\nconst hasReboot = inWindow.some(a => a.statusCode === 'SYSTEM_REBOOTED' || (/System rebooted/i).test(a.message||''));\nconst patchIssues = inWindow.filter(a => (a.activityResult === 'FAILURE') || (/FAILED|ERROR/i).test(a.statusCode||'') || (/download error|failed|blocked/i).test(a.message||''));\nconst postScan = inWindow.some(a => (/post reboot scan is required/i).test(a.message||''));\nif (!hasReboot && patchIssues.length === 0 && !postScan) { return []; }
+const linkBase = $json.config.LINK_BASE || '';
 return [{
   json: {
     deviceId: $json.deviceId,
@@ -88,56 +129,56 @@ return [{
     patchIssues: patchIssues.length,
     postRebootScanRequired: postScan,
     link: linkBase ? `${linkBase}/${$json.deviceId}/overview` : '',
-    windowStart: $json.WINDOW_START,
-    windowEnd: $json.WINDOW_END
+    windowStart: $json.config.WINDOW_START,
+    windowEnd: $json.config.WINDOW_END,
+    notifyEmail: $json.config.NOTIFY_EMAIL
   }
 }];"
       },
+      "id": "FilterAlerts",
       "name": "Filter Alerts",
       "type": "n8n-nodes-base.function",
       "typeVersion": 1,
-      "position": [1400, 300]
+      "position": [1380, 300]
     },
     {
       "parameters": {
-        "functionCode": "// Deduplicate per device/window using static data\nconst key = `${$json.windowStart}|${$json.deviceId}`;\nconst store = this.getWorkflowStaticData('global');\nif (store[key]) { return []; }
+        "functionCode": "const key = `${$json.windowStart}|${$json.deviceId}`;\nconst store = this.getWorkflowStaticData('global');\nif (store[key]) { return []; }
 store[key] = true;\nreturn [{ json: $json }];"
       },
+      "id": "Dedupe",
       "name": "Dedupe",
       "type": "n8n-nodes-base.function",
       "typeVersion": 1,
-      "position": [1620, 300]
+      "position": [1560, 300]
     },
     {
       "parameters": {
         "fromEmail": "monitor@example.com",
-        "toEmail": "{{$json["NOTIFY_EMAIL"]}}",
+        "toEmail": "={{$json.notifyEmail}}",
         "subject": "NinjaRMM Maintenance Alert: {{$json.deviceName}}",
         "text": "Device: {{$json.deviceName}} (ID {{$json.deviceId}})\nRebooted: {{$json.rebooted}}\nPatch issues: {{$json.patchIssues}}\nPost-reboot scan required: {{$json.postRebootScanRequired}}\nLink: {{$json.link}}\nWindow: {{$json.windowStart}} to {{$json.windowEnd}}"
       },
+      "id": "EmailAlert",
       "name": "Email Alert",
       "type": "n8n-nodes-base.emailSend",
       "typeVersion": 2,
-      "position": [1840, 300]
-    },
-    {
-      "parameters": {
-        "rule": "* * * * *"
-      },
-      "name": "Cron",
-      "type": "n8n-nodes-base.cron",
-      "typeVersion": 1,
-      "position": [120, 300]
+      "position": [1740, 300]
     }
   ],
   "connections": {
     "Cron": {"main": [[{"node": "Set Config", "type": "main", "index": 0}]]},
-    "Set Config": {"main": [[{"node": "Get Token", "type": "main", "index": 0}]]},
-    "Get Token": {"main": [[{"node": "List Devices", "type": "main", "index": 0}]]},
+    "Set Config": {"main": [[{"node": "Store Config", "type": "main", "index": 0}, {"node": "Get Token", "type": "main", "index": 0}]]},
+    "Store Config": {"main": [[{"node": "Merge Config + Token", "type": "main", "index": 0}]]},
+    "Get Token": {"main": [[{"node": "Merge Config + Token", "type": "main", "index": 1}]]},
+    "Merge Config + Token": {"main": [[{"node": "List Devices", "type": "main", "index": 0}]]},
     "List Devices": {"main": [[{"node": "Filter Servers", "type": "main", "index": 0}]]},
     "Filter Servers": {"main": [[{"node": "Fetch Activities", "type": "main", "index": 0}]]},
     "Fetch Activities": {"main": [[{"node": "Filter Alerts", "type": "main", "index": 0}]]},
     "Filter Alerts": {"main": [[{"node": "Dedupe", "type": "main", "index": 0}]]},
     "Dedupe": {"main": [[{"node": "Email Alert", "type": "main", "index": 0}]]}
-  }
+  },
+  "active": false,
+  "settings": {},
+  "version": 2
 }
