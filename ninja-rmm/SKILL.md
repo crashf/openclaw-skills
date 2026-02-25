@@ -77,6 +77,7 @@ Behavior:
 - Falls back to lastBoot if activity is missing.
 - Flags post-reboot scan required when present in activity messages.
 - Optional `--link-base` prints per-device links as `<link-base>/<deviceId>/overview` (example base above).
+- **Monitoring plan**: During active windows, if a reboot occurs and a post-reboot scan is required (or patch issues persist), send a notification with the device link so the scan/reboot can be performed.
 
 ## Direct API Queries
 
