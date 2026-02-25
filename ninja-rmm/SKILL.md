@@ -100,6 +100,14 @@ curl -s -H "Authorization: Bearer $TOKEN" "https://${NINJA_INSTANCE}/v2/organiza
 curl -s -H "Authorization: Bearer $TOKEN" "https://${NINJA_INSTANCE}/v2/activities"
 ```
 
+## N8N Workflow (maintenance alerting)
+See `n8n/README.md` and `n8n/workflow.json`:
+- Cron-driven, read-only alerts during windows.
+- Detects reboots + post-reboot scan required + patch issues from activity logs.
+- De-dupes per device per window.
+- Optional device links via `LINK_BASE` (e.g., `https://pundit.rmmservice.com/#/deviceDashboard/<id>/overview`).
+- Notifier node defaults to email; adapt to Slack/Telegram as needed.
+
 ## Current Scope
 
 **monitoring** (read-only) — can query devices, alerts, activities, software inventory.
