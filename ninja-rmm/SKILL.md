@@ -63,12 +63,20 @@ Output: device counts, offline servers list, alert summary, stale reboot count.
 ./scripts/devices.sh --limit 20            # Limit results
 ```
 
-### maintenance-monitor.sh — Monitor maintenance windows
+### maintenance-monitor.sh — Monitor maintenance windows (read-only, activity-log aware)
 ```
 ./scripts/maintenance-monitor.sh --org 5 --phase scan
 ./scripts/maintenance-monitor.sh --org 5 --phase patch --window-start "2026-02-23T17:00:00"
 ./scripts/maintenance-monitor.sh --org 5 --phase final --window-start "2026-02-23T17:00:00"
+# Optional: include device links using your console base (example below)
+./scripts/maintenance-monitor.sh --org 5 --phase final --window-start "2026-02-23 17:00" \
+  --link-base "https://pundit.rmmservice.com/#/deviceDashboard"
 ```
+Behavior:
+- Uses activity logs to detect reboots (SYSTEM_REBOOTED) and patch issues (failures, error messages, download errors) inside the window.
+- Falls back to lastBoot if activity is missing.
+- Flags post-reboot scan required when present in activity messages.
+- Optional `--link-base` prints per-device links as `<link-base>/<deviceId>/overview` (example base above).
 
 ## Direct API Queries
 
