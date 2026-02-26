@@ -54,6 +54,18 @@ cat ../config/april-2026-jobs.json | jq -r '.[] | select(.name | contains("Start
 
 Jobs can be loaded via the OpenClaw cron API. From a chat session, ask the bot to create cron jobs from the generated JSON file.
 
+### 5. Mandatory Cron Coverage Check (Do this every month)
+
+Before each month starts (or immediately after schedule changes):
+
+1. Generate jobs for the month from `config/maintenance-windows.json`.
+2. Load/apply those jobs into OpenClaw.
+3. Verify jobs exist with `openclaw cron list`.
+4. Confirm each enabled client has maintenance jobs present for that month (minimum start + final; preferred full phase set).
+5. If any window is missing, generate/apply again before the window begins.
+
+This is required so maintenance monitoring always kicks off automatically without manual intervention.
+
 ---
 
 ## File Structure
@@ -108,10 +120,11 @@ During each window, the bot runs 4 checks:
 
 These are mandatory for every maintenance window:
 
-1. **30 minutes before window end:** run a detailed monitor check and send device-level results (online/offline, rebooted count, pending/failed, patch-log issues, post-reboot-scan flags).
-2. **Reboot verification is required:** explicitly confirm whether each expected server rebooted during the window. If any did not reboot, flag as an issue.
-3. **Error capture for ticketing:** any patch failures, patch-log issues, download errors, or post-reboot-scan-required flags must be called out clearly so a follow-up ticket can be created.
-4. **No generic-only updates:** do not rely only on high-level cron completion text when detailed monitor output is available.
+1. **Automatic kickoff via cron is required:** ensure a cron-driven maintenance start job exists for every enabled window (no manual-only starts).
+2. **30 minutes before window end:** run a detailed monitor check and send device-level results (online/offline, rebooted count, pending/failed, patch-log issues, post-reboot-scan flags).
+3. **Reboot verification is required:** explicitly confirm whether each expected server rebooted during the window. If any did not reboot, flag as an issue.
+4. **Error capture for ticketing:** any patch failures, patch-log issues, download errors, or post-reboot-scan-required flags must be called out clearly so a follow-up ticket can be created.
+5. **No generic-only updates:** do not rely only on high-level cron completion text when detailed monitor output is available.
 
 ### Required Per-Window Report Format (Exact deliverable)
 
