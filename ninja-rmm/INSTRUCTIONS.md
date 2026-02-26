@@ -104,6 +104,37 @@ During each window, the bot runs 4 checks:
 3. **Reboot Check (T+75min)** — Which servers have rebooted?
 4. **Final Report (T+window+15min)** — Summary: success/failures, action items
 
+### Required Ops Policy (Wayne)
+
+These are mandatory for every maintenance window:
+
+1. **30 minutes before window end:** run a detailed monitor check and send device-level results (online/offline, rebooted count, pending/failed, patch-log issues, post-reboot-scan flags).
+2. **Reboot verification is required:** explicitly confirm whether each expected server rebooted during the window. If any did not reboot, flag as an issue.
+3. **Error capture for ticketing:** any patch failures, patch-log issues, download errors, or post-reboot-scan-required flags must be called out clearly so a follow-up ticket can be created.
+4. **No generic-only updates:** do not rely only on high-level cron completion text when detailed monitor output is available.
+
+### Required Per-Window Report Format (Exact deliverable)
+
+For **each machine involved** in the maintenance window, send a report with this structure:
+
+- **Device:** <hostname> (online/offline)
+- **Reboots during window:** Yes/No (+ count and approximate times)
+- **Patch status outcome:**
+  - Pending patches: <count>
+  - Failed patches: <count>
+  - Patch-management failure events: <count + short reason>
+  - Post-reboot scan required: Yes/No
+- **Issues to ticket:**
+  1. <issue 1>
+  2. <issue 2>
+  3. <issue 3>
+
+Rules:
+- If there are no issues, explicitly state **"No ticketable issues detected."**
+- If a reboot was required but did not happen, always include a ticket item.
+- Include significant activity events that justify conclusions (e.g., pending reboot block, scan completed, reboot detected).
+- Deliver this report at minimum at the **30-min-before-end check** and in the **final summary**.
+
 ### What Gets Monitored
 
 - **Servers only** (WINDOWS_SERVER class) — not workstations
